@@ -3,6 +3,52 @@
 }
 
 header {
-    color: darkorchid;
+    
     font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 25px auto;
+    width: 75%;
+    flex-direction: column;
+    align-content: center;
+}
+
+#scores {
+    color: royalblue;
+}
+
+button {
+    background-color: royalblue;
+    color: white;
+    width: auto;
+    border-radius: 15px;
+    height: 50px;
+    font-size: large;
+}
+
+.question-block .result {
+    font-weight: normal;
+    font-size: 1.5em;
+    font-style: italic;
+}
+
+
+.splash {
+    text-align: center;
+}
+
+#answers {
+    display: flex;
+    flex-direction: column;
+}
+
+#score, #high-scores, #question-block {
+    display: none;
 }

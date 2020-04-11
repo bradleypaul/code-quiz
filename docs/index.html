@@ -1,14 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
-    <link rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/questions.js"></script>
+    <script async src="assets/js/script.js"></script>
+
 </head>
+
 <body>
     <header>
-        <a>View High Scores</a>
-    </header>         
+        <div id="scores"><a>View High Scores</a></div>
+        <div id="timer">Time: <span id="time">0</span></div>
+    </header>
+    <main>
+        <div id="splash">
+            <h1>Coding Quiz Challenge</h1>
+            <div>
+                Try to answer the following code-related questions within the time limit.
+                Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+            </div>
+            <button id="start">Start Quiz</button>
+        </div>
+        <div id="question-block">
+            <h1 id="question">What is my favorite color?</h1>
+
+            <div id="answers">
+            </div>
+            <div>
+                <hr /><span id="result"></span>
+            </div>
+
+        </div>
+        <div id="score">
+            <h1>All Done!!</h1>
+            <span>
+                Your final score is:<span id="final-score"></span>
+                <br />
+                Enter initials: <input type="text" id="initials" />
+                <button id="submit-score"> Submit </button>
+            </span>
+        </div>
+        <div id="high-scores">
+            <h1>High scores:</h1>
+            <ol id="scores-list"></ol>
+            <button id="reset">Go Back</button>
+            <button id="clear">Clear High Scores</button>
+        </div>
+    </main>
 </body>
+
+
+
 </html>
