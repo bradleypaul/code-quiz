@@ -1,9 +1,9 @@
 const timeElement = document.querySelector('#time');
-const startButton = document.querySelector('#start');
 const splashElement = document.querySelector('#splash');
 const questionBlock = document.querySelector('#question-block');
 const scoreElement = document.querySelector('#score');
 const highScoresElement = document.querySelector('#high-scores');
+
 let timer;
 let interval;
 let questionIndex;
@@ -22,7 +22,6 @@ function countdown() {
 }
 
 function generateAnswerElement(ans, index, correctAnswer) {
-    console.log(correctAnswer)
     const answerElement = document.createElement('button');
     answerElement.innerText = `${index + 1}. ${ans}`;
     if (ans === correctAnswer) {
@@ -52,9 +51,9 @@ function validateAnswer(event) {
     if (attribute === "false") {
         timer -= 10;
         timeElement.innerText = timer;
-        updateResult(false)  
+        updateResult(false);
     } else if (attribute === "true") {
-        updateResult(true)
+        updateResult(true);
     }
 
     displayQuestion(++questionIndex);
@@ -62,7 +61,7 @@ function validateAnswer(event) {
 
 function updateResult(correct) {
     const result = document.querySelector("#result");
-    if(correct) {
+    if (correct) {
         result.innerText = "Correct!";
     } else {
         result.innerText = "Wrong!";
@@ -75,11 +74,11 @@ function displayQuestion(index) {
         generateAnswerElements(questions[index].ans, questions[index].correctAnswer);
     } else {
         document.querySelector('#question-block').style.display = 'none';
+        document.querySelector('#result').innerText = '';
         clearInterval(interval);
         questionBlock.style.display = "none";
         saveScore(timer);
     }
-
 }
 
 function saveScore(timer) {
@@ -90,11 +89,9 @@ function saveScore(timer) {
 function submitScore() {
     const finalScore = timer;
     const initials = document.querySelector("#initials").value;
-    console.log(initials);
     scoreElement.style.display = "none";
-    
+
     const scores = JSON.parse(localStorage.getItem('scores') || '{}')
-    console.log(scores);
     scores[initials] = finalScore;
     localStorage.setItem("scores", JSON.stringify(scores));
     displayHighScores();
@@ -109,7 +106,7 @@ function createScoreElement(initials, score) {
 function createScoreList(scoresList, scores) {
     const initials = Object.keys(scores);
     initials.forEach((item) => {
-        const scoreElement = createScoreElement( item, scores[item]);
+        const scoreElement = createScoreElement(item, scores[item]);
         scoresList.append(scoreElement);
     });
 }
@@ -122,14 +119,14 @@ function displayHighScores() {
     createScoreList(scoresList, scores);
 }
 
-function reset() {    
+function reset() {
     splashElement.style.display = "block";
     scoreElement.style.display = "none";
     questionBlock.style.display = "none";
     highScoresElement.style.display = "none";
 }
 
-startButton.addEventListener('click', function () {
+document.querySelector('#start').addEventListener('click', () => {
     splashElement.style.display = "none";
     questionBlock.style.display = "block";
     timer = 75;
@@ -139,7 +136,7 @@ startButton.addEventListener('click', function () {
     displayQuestion(questionIndex);
 });
 
-document.querySelector('#scores').addEventListener('click', function () {   
+document.querySelector('#scores').addEventListener('click', () => {
     scoreElement.style.display = "none";
     splashElement.style.display = "none";
     questionBlock.style.display = "none";
